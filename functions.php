@@ -1,5 +1,6 @@
 <?php
 
+
 function debug($array, $die = false) 
 {
     echo "<pre>";

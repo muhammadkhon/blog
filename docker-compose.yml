@@ -1,0 +1,33 @@
+version: '3'
+services:
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/var/www/html
+    ports:
+      - 80:80
+    restart: always
+    networks:
+      - app-network
+
+  mysql:
+    platform: linux/x86_64
+    image: mysql:5.7
+    environment:
+      MYSQL_USER: blog
+      MYSQL_PASSWORD: blog
+      MYSQL_DATABASE: blog
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - "./.data/db:/var/lib/mysql"
+    networks:
+      - app-network
+    ports:
+      - "3306:3306"
+    restart: always
+
+networks:
+  app-network:
+    driver: bridge
