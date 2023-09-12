@@ -4,6 +4,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    # image: breakhack/php7.4
     volumes:
       - .:/var/www/html
     ports:

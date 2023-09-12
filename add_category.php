@@ -12,7 +12,8 @@ include_once('header.php');
 		<div class="row">
 			<div class="col-md-10">
 				<ul class="page-header-breadcrumb">
-					<li><a href="index.html">Home</a></li>
+					<li><a href="/">Home</a></li>
+					<li><a href="/category.php">Категории</a></li>
 					<li>Добавить категорию</li>
 				</ul>
 				<h1>Добавить категорию</h1>
@@ -34,11 +35,6 @@ include_once('header.php');
 				<div class="col-md-5 col-md-offset-1">
 					<div class="section-row">
 						<h3>Добавить категорию <?= $_SESSION['login']; ?></h3>
-
-						<?php
-						debug($_SESSION, true);
-						debug($_COOKIE['sessionId'], true);
-						?>
 						<form action="add_category.php" method="post">
 							<div class="row">
 								<div class="col-md-7">

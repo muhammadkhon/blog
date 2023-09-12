@@ -58,10 +58,32 @@
                         <li><a href="category.html">News</a></li>
                         <li><a href="category.html">Popular</a></li>
 
-                        <li class="cat-1"><a href="category.html">Web Design</a></li>
+                        <?php
+                        try {
+                            $sql = "SELECT * FROM category WHERE status = 1";
+                            $result = $db->query($sql);
+                            $style = '<style>';
+                            while ($row = $result->fetch()) {
+                                echo '<li class="cat-' . $row['id'] . '"><a href="show_category.php?id' . $row['id'] . '">' . $row['name'] . '</a></li>';
+                                $style .= '
+                                .nav-menu li.cat-' . $row['id'] . ' a:after {
+                                    background-color: ' . $row['color'] . ';
+                                }
+                                .nav-menu li.cat-' . $row['id'] . ' a:hover, .nav-menu li.cat-' . $row['id'] . ' a:focus {
+                                    color: ' . $row['color'] . ';
+                                }
+                                ';
+                            }
+
+                            echo $style . '</style>';
+                        } catch (PDOException $e) {
+                            echo $e->getMessage();
+                        }
+                        ?>
+                        <!-- <li class="cat-1"><a href="category.html">Web Design</a></li>
                         <li class="cat-2"><a href="category.html">JavaScript</a></li>
                         <li class="cat-3"><a href="category.html">Css</a></li>
-                        <li class="cat-4"><a href="category.html">Jquery</a></li>
+                        <li class="cat-4"><a href="category.html">Jquery</a></li> -->
                     </ul>
                     <!-- /nav -->
 
