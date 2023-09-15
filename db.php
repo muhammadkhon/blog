@@ -1,10 +1,12 @@
 <?php
 
+include_once('helpers/Log.php');
+
 $host = 'mysql';
 $db   = 'blog';
 $user = 'root';
 $pass = 'root';
-$port = "3306";
+$port = "330";
 $charset = 'utf8';
 
 $options = [
@@ -13,5 +15,9 @@ $options = [
     \PDO::ATTR_EMULATE_PREPARES   => false,
 ];
 
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset;port=$port";
-$db = new \PDO($dsn, $user, $pass, $options);
+try {
+    $dsn = "mysql:host=$host;dbname=$db;charset=$charset;port=$port";
+    $db = new \PDO($dsn, $user, $pass, $options);
+} catch (PDOException $e) {
+    new Log($e);
+}

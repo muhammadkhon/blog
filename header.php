@@ -41,7 +41,7 @@
                 <div class="container">
                     <!-- logo -->
                     <div class="nav-logo">
-                        <a href="index.html" class="logo"><img src="./img/logo.png" alt=""></a>
+                        <a href="/" class="logo"><img src="./img/logo.png" alt=""></a>
                     </div>
                     <!-- /logo -->
 
@@ -76,9 +76,14 @@
                             }
 
                             echo $style . '</style>';
-                        } catch (PDOException $e) {
-                            echo $e->getMessage();
                         }
+                        catch (PDOException $e) {
+							new Log($e);
+							$_SESSION['error']['text'] = 'При выполнение данной операции произошла ошибка';
+						} catch (Error $e) {
+							new Log($e);
+							$_SESSION['error']['text'] = 'При выполнение данной операции произошла ошибка';
+						}
                         ?>
                         <!-- <li class="cat-1"><a href="category.html">Web Design</a></li>
                         <li class="cat-2"><a href="category.html">JavaScript</a></li>
@@ -106,7 +111,7 @@
                 <!-- nav -->
                 <div class="section-row">
                     <ul class="nav-aside-menu">
-                        <li><a href="index.html">1Home</a></li>
+                        <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="#">Join Us</a></li>
                         <li><a href="#">Advertisement</a></li>

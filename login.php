@@ -45,12 +45,15 @@ include_once("functions.php");
 				<div class="col-md-5 col-md-offset-1">
 					<div class="section-row">
 						<h3>Авторизация</h3>
+
+
 						<?php
-						// $password = '123';
+						
+						$password = '123';
 						// echo $password;
 						// echo '<br>';
-						// $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-						// echo $passwordHash;
+						$passwordHash = password_hash($password, PASSWORD_DEFAULT);
+						echo $passwordHash;
 						// echo '<br>';
 						// echo md5($password);
 						// echo '<br>';

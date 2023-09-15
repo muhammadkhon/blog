@@ -4,6 +4,7 @@ include_once("functions.php");
 include_once("session.php");
 include_once("db.php");
 include_once('header.php');
+
 ?>
 
 <!-- Page Header -->
@@ -65,6 +66,8 @@ include_once('header.php');
 			<?php else : ?>
 
 				<?php
+
+
 				if (isset($_POST['name'])) $name = $_POST['name'];
 				if (isset($_POST['color'])) $color = $_POST['color'];
 				if (isset($_POST['status'])) $status = $_POST['status'] == "on" ? 1 : 0;
@@ -86,19 +89,6 @@ include_once('header.php');
 						$sql->execute($data);
 
 						echo "Ok";
-						echo "<br>";
-
-						$sql = "SELECT * FROM category";
-						$result = $db->query($sql);
-
-						debug($result);
-
-
-						while ($row = $result->fetch()) {
-							debug($row);
-						}
-
-						debug($row);
 					} catch (PDOException $e) {
 						echo $e->getMessage();
 					}

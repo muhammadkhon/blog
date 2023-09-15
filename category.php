@@ -66,7 +66,11 @@ include_once('header.php');
 								echo '</tr>';
 							}
 						} catch (PDOException $e) {
-							echo $e->getMessage();
+							new Log($e);
+							$_SESSION['error']['text'] = 'При выполнение данной операции произошла ошибка';
+						} catch (Error $e) {
+							new Log($e);
+							$_SESSION['error']['text'] = 'При выполнение данной операции произошла ошибка';
 						}
 						?>
 					</table>
